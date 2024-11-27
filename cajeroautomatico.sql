@@ -1,0 +1,37 @@
+DROP DATABASE IF EXISTS cuentas; 
+CREATE DATABASE cuentas;
+USE cuentas;
+
+DROP TABLE IF EXISTS User;
+
+CREATE TABLE User (
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    name VARCHAR(55) NOT NULL, 
+    num_card VARCHAR(16) NOT NULL UNIQUE,
+    pin VARCHAR(4) NOT NULL, 
+    money DOUBLE NOT NULL
+);
+
+INSERT INTO User (name, num_card, pin, money) 
+VALUES
+('Juan', '1234567891234567', '1234', 1300),
+('Ivan', '1234567899876543', '1234', 2567.78),
+('Samantha', '1234567896547711', '1234', 1300);
+
+
+
+-- NAME
+SELECT NAME FROM user WHERE num_card = 1234567891234567;
+-- MONEY 
+SELECT money FROM user WHERE num_card = 1234567891234567;
+
+-- RETIRO
+UPDATE User SET money = money - 100 WHERE num_card=1234567891234567;
+
+-- DEPOSITAR 
+UPDATE User SET money = money + 1000 WHERE num_card=1234567891234567;
+
+-- TRANFERENCIA 
+UPDATE User SET money = money - 100 WHERE num_card=1234567891234567 ;
+UPDATE User SET money = money + 100 WHERE num_card=1234567896547711 ;
+SELECT * FROM user;

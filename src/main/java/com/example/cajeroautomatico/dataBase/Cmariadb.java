@@ -4,10 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Cmariadb {
-    String url =  "jdbc:mariadb://localhost:3306/nombre_bd";
+    String url =  "jdbc:mariadb://localhost:3307/cuentas";
     String user= "root";
     String pass = "C0smopolis.";
     Connection conn = null;
+
     public void connection(){
         try{
             conn = DriverManager.getConnection(url, user, pass);
@@ -15,5 +16,9 @@ public class Cmariadb {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    public Connection getConn() {
+        return conn;
     }
 }
